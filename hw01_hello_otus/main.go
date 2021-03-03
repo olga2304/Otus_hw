@@ -8,5 +8,5 @@ import (
 
 func main() {
 	// Place your code here.
-	fmt.Println(stringutil.Reverse("!SUTO ,olleH"))
+	fmt.Println(stringutil.Reverse("Hello, OTUS!"))
 }
