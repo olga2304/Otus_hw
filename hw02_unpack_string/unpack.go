@@ -11,7 +11,7 @@ var ErrInvalidString = errors.New("invalid string")
 
 func Unpack(s string) (string, error) {
 	if _, err := strconv.Atoi(s); err == nil {
-		return "", errors.New("invalid string")
+		return "", nil
 	}
 
 	var a rune
@@ -19,6 +19,9 @@ func Unpack(s string) (string, error) {
 	var str strings.Builder
 
 	for _, char := range s {
+		if s[0] <= 58 && s[0] >= 48 {
+			return "", nil
+		}
 		if unicode.IsDigit(char) && b {
 			m := int(char - '0')
 			if m == 0 {
