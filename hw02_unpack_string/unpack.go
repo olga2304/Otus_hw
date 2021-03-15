@@ -11,7 +11,7 @@ var ErrInvalidString = errors.New("invalid string")
 
 func Unpack(s string) (string, error) {
 	if _, err := strconv.Atoi(s); err == nil {
-		return "", nil
+		return "", errors.New("invalid string")
 	}
 
 	var a rune
