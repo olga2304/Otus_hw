@@ -24,9 +24,6 @@ func Unpack(s string) (string, error) {
 		}
 		if unicode.IsDigit(char) && b {
 			m := int(char - '0')
-			if str.Len() > 1 && b{
-				return "", ErrInvalidString
-			}
 			if m == 0 {
 				l := str
 				str.Reset()
