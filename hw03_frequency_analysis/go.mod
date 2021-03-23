@@ -1,4 +1,4 @@
-module github.com/olga2304/Otus_hw/hw03_frequency_analysis
+module github.com/olga2304/Otus_hw/tree/hw03_frequency_analysis
 
 go 1.16
 
