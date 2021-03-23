@@ -3,16 +3,7 @@ package hw03frequencyanalysis
 import (
 	"sort"
 	"strings"
-	"unicode"
 )
-
-func ExFieldsFunc(s string) []string {
-	s = strings.ToLower(s)
-	f := func(c rune) bool {
-		return !unicode.IsLetter(c) && !unicode.IsNumber(c)
-	}
-	return strings.FieldsFunc(s, f)
-}
 
 type Arr struct {
 	Key   string
@@ -34,7 +25,9 @@ func (p ArrList) Swap(i, j int) {
 }
 
 func Top10(str string) []string {
-	arr := ExFieldsFunc(str)
+	arr := strings.FieldsFunc(str, func(r rune) bool {
+		return strings.ContainsRune("0123456789\t\n\r ", r)
+	})
 
 	counts := make(map[string]int)
 	for _, word := range arr {
@@ -55,8 +48,6 @@ func Top10(str string) []string {
 		}
 		res = append(res, pair.Key)
 	}
-
-	sort.Strings(res)
 
 	return res
 }
