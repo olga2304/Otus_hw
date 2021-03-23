@@ -43,9 +43,23 @@ var text = `Как видите, он  спускается  по  лестни�
 	посидеть у огня и послушать какую-нибудь интересную сказку.
 		В этот вечер...`
 
+const shortText = `Я роняю запад, ууу.`
+
+const repeatingWordsText = `ba, ba, ba, na na na - - - banana!`
+
 func TestTop10(t *testing.T) {
 	t.Run("no words in empty string", func(t *testing.T) {
 		require.Len(t, Top10(""), 0)
+	})
+
+	t.Run("short string", func(t *testing.T) {
+		expected := []string{"Я", "роняю", "запад,", "ууу."}
+		require.ElementsMatch(t, expected, Top10(shortText))
+	})
+
+	t.Run("repeating words in text", func(t *testing.T) {
+		expected := []string{"ba,", "na", "-", "banana!"}
+		require.ElementsMatch(t, expected, Top10(repeatingWordsText))
 	})
 
 	t.Run("positive test", func(t *testing.T) {
