@@ -6,17 +6,14 @@ import (
 )
 
 func Top10(str string) []string {
-	arr := strings.FieldsFunc(str, func(r rune) bool {
-		return strings.ContainsRune("0123456789\t\n\r ", r)
-	})
+	arr := strings.Fields(str)
 
 	counts := make(map[string]int)
-	p := make([]string, 0, len(counts))
-	res := make([]string, 0, 10)
+	p := make([]string, 0, 0)
 	t := 10
 
 	for _, a := range arr {
-		if _, k := counts[a]; !k {
+		if _, ok := counts[a]; !ok {
 			p = append(p, a)
 		}
 		counts[a]++
@@ -30,6 +27,7 @@ func Top10(str string) []string {
 		t = len(p)
 	}
 
+	res := make([]string, 0, 10)
 	res = append(res, p[:t]...)
 
 	return res
