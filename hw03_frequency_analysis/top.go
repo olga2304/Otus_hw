@@ -9,7 +9,7 @@ func Top10(str string) []string {
 	arr := strings.Fields(str)
 
 	counts := make(map[string]int)
-	p := make([]string, 0, 0)
+	p := make([]string, 0)
 	t := 10
 
 	for _, a := range arr {
